@@ -1,3 +1,4 @@
+
 // a part of state that returned from auth Reducer
 export interface AuthState {
     user: any
@@ -13,6 +14,4 @@ export interface AppState {
     users: UsersState
 }
 // users State
-export interface UsersState {
-    users: []
-}
+export type UsersState = []

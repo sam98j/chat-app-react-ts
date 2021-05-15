@@ -4,11 +4,13 @@ import styles from '../styles/pages/home.module.scss'
 import io, { Socket } from 'socket.io-client'
 import SideBar from '../components/sideBar';
 import UsersActions from '../actions/users'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState } from '../interfaces/store';
  
 const Home = () => {
     const {getAllUsers} = new UsersActions();
     const dispatch = useDispatch();
+    const AppState = useSelector<AppState, AppState>((AppState) => AppState)
     const [state, setState] = React.useState<HomeState>({
         io: {} as Socket
     })
@@ -18,10 +20,10 @@ const Home = () => {
             io: io("http://localhost:5000")
         })
         dispatch(getAllUsers())
-    }, [])
+    }, []);
     return (
         <div className={styles.Home}>
-            <SideBar />
+            <SideBar users={AppState.users}/>
         </div>
     );
 }

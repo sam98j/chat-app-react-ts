@@ -1,5 +1,5 @@
 import React, { useEffect} from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from './interfaces/store';
 import Login from './pages/login';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     dispatch(checkUser())
   }, [])
-  console.log(store, isLoggedIn);
   const component = isLoggedIn === null ? Loader : isLoggedIn ? Home : Login;
   return (
     <div className="App">

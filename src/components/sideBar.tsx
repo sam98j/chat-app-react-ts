@@ -1,11 +1,14 @@
 import * as React from 'react';
+import { SideBarProps } from '../interfaces/components/sideBar';
 import styles from '../styles/components/sideBar.module.scss'
 import SingleUser from './singleUser';
 
-export default function SideBar () {
+export const SideBar: React.FC<SideBarProps>  = ({users}) => {
     return (
         <div className={styles.SideBar}>
-            <SingleUser />
+            {users.map((user: any) => <SingleUser />)}
         </div>
     )
 }
+
+export default SideBar
