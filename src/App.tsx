@@ -1,23 +1,30 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import io, { Socket } from 'socket.io-client'
-import DataActions from './actions/data';
+import { AppState } from './interfaces/store';
 import Login from './pages/login';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Home from './pages/home';
+import Loader from './components/loader';
+import AuthActions from './actions/auth';
 
 function App() {
-  const {getTodos} = new DataActions();
+  const {checkUser} = new AuthActions();
   const dispatch = useDispatch();
-  const store = useSelector((AppState) => AppState);
-  const [state, setSate] = useState({
-    io: {} as Socket,
-  });
+  const store = useSelector<AppState, AppState>((AppState) => AppState);
+  const isLoggedIn = store.auth.user === null ? null : store.auth.user ? true : false;
   useEffect(() => {
-    dispatch(getTodos())
+    dispatch(checkUser())
   }, [])
-  console.log(store)
+  console.log(store, isLoggedIn);
+  const component = isLoggedIn === null ? Loader : isLoggedIn ? Home : Login;
   return (
     <div className="App">
-      <Login />
+      <Router>
+        <Switch>
+          {/* <Route path="/login"><Login /></Route> */}
+          <Route exact path="/" component={component}></Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

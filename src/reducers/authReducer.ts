@@ -8,6 +8,12 @@ const initState: AuthState = {
 const authReducer = (state = initState, action: {type: string, payload: any}): AuthState => {
     switch(action.type){
         case AuthActionsTypes.LOGIN:
+            localStorage.setItem('token', `Bearar ${action.payload.token!}`)
+            return {
+                ...state,
+                user: action.payload.username!
+            }
+        case AuthActionsTypes.CHECK_USER:
             return {
                 ...state,
                 user: action.payload.username!

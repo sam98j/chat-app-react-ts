@@ -9,5 +9,10 @@ export interface DataState {
 // the whole app state
 export interface AppState {
     auth: AuthState,
-    data: DataState
+    data: DataState,
+    users: UsersState
+}
+// users State
+export interface UsersState {
+    users: []
 }

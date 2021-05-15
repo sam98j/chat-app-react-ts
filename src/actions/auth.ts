@@ -22,4 +22,22 @@ export default class AuthActions {
             }
         }
     }
+    // check User
+    checkUser = () => async (dispatch: Function) => {
+        const reqConfig: RequestInit = {
+            method: "GET",
+            headers: {
+                authorization: localStorage.getItem('token')!
+            }
+        };
+
+        // establish connection
+        try {
+            const reqPending = await fetch('http://localhost:5000/auth/check_user', reqConfig);
+            const res = await reqPending.json();
+            dispatch({type: AuthActionsTypes.CHECK_USER, payload: res})
+        } catch(err) {
+            console.log(err)
+        }
+    }
 }

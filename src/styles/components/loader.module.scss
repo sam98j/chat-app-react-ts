@@ -6,6 +6,9 @@
     border: 2px solid green;
     border-bottom-color: transparent;
     animation: animate .9s linear infinite;
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
 }
 
 @keyframes animate {
