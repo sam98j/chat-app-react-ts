@@ -6,7 +6,9 @@ import SideBar from '../components/sideBar';
 import UsersActions from '../actions/users'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../interfaces/store';
- 
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import PrivateChat from './privateChat';
+
 const Home = () => {
     const {getAllUsers} = new UsersActions();
     const dispatch = useDispatch();
@@ -24,6 +26,9 @@ const Home = () => {
     return (
         <div className={styles.Home}>
             <SideBar users={AppState.users}/>
+            <div className={styles.MainArea}>
+                <Route path="/chat/:recUserId" component={PrivateChat}></Route>
+            </div>
         </div>
     );
 }

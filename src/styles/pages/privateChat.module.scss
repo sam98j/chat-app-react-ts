@@ -1,0 +1,29 @@
+.PrivateChat {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // nav bar
+    nav{
+        height: 50px;
+        border-bottom: 1px solid lightgray;
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        // avatar
+        .Avatar {
+            height: 40px;
+            width: 40px;
+            background-color: green;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    }
+    footer {
+        height: 50px;
+        background-color: red;
+    }
+    main {
+        flex-grow: 1;
+    }
+}

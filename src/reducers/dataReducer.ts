@@ -1,16 +1,21 @@
-import { DataActionsTypes } from "../interfaces/actionsTypes/auth";
-import { AuthState, DataState } from "../interfaces/store";
+import { DataActionsTypes } from "../interfaces/actionsTypes/data";
+import { DataState } from "../interfaces/store";
 // inital state
 const initState: DataState = {
-    todos: []
+    pChatData: {
+        avatar: null,
+        messages: [],
+        username: "",
+        recId: ""
+    }
 };
 // auth reducer
 const dataReducer = (state = initState, action: {type: string, payload: any}): DataState => {
     switch(action.type){
-        case DataActionsTypes.FETCH_DATA:
+        case DataActionsTypes.pChatData:
             return {
                 ...state,
-                todos: action.payload
+                pChatData: action.payload
             }
         default:
             return state

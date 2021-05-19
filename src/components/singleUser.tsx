@@ -1,11 +1,18 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { User } from '../interfaces/store';
 import styles from '../styles/components/singleUser.module.scss'
 
-export default function SingleUser(){
+const SingleUser: React.FC<{user: User}> = ({user}) => {
+    const {_id, username,} = user;
     return (
-        <div className={styles.SingleUser}>
-            <div className={styles.Avatar}></div>
-            <h3 className={styles.Name}>HossamAlden</h3>
-        </div>
+        <Link to={`/chat/${_id}`}>
+            <div className={styles.SingleUser}>
+                <div className={styles.Avatar}></div>
+                <h3 className={styles.Name}>{username}</h3>
+            </div>
+        </Link>
     )
 }
+
+export default SingleUser

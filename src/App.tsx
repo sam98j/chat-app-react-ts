@@ -20,8 +20,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {/* <Route path="/login"><Login /></Route> */}
-          <Route exact path="/" component={component}></Route>
+          <Route path="/" component={component}></Route>
         </Switch>
       </Router>
     </div>
