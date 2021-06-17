@@ -1,4 +1,4 @@
-import { UserCredentials } from "../actionsCreators/auth";
+import { UserCredentials } from "../apis/auth";
 // login component state
 export interface LoginState {
     isLoading: boolean;

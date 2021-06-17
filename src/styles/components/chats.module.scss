@@ -1,0 +1,45 @@
+.chats {
+    margin: 109px 59px 0 59px;
+    width: 597px;
+    height: calc(100vh - 109px);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {display: none;}
+    &::-webkit-scrollbar-track {display: none}
+    &::-webkit-scrollbar-thumb {display: none}
+    &::-moz-scrollbar {display: none;}
+    &::-moz-scrollbar-track {display: none}
+    &::-moz-scrollbar-thumb {display: none}
+    .header {
+        display: flex;
+        justify-content: space-between;
+        width: 580px;
+        margin: 0 auto;
+        h1 {
+            font-family: TT Norms;
+            font-size: 36px;
+            line-height: 26px;
+            /* identical to box height, or 72% */
+            letter-spacing: 0.01em;
+            text-transform: capitalize;
+            color: #0D1C2E;
+        }
+        a {
+            display: inline-block;
+            width: 240px;
+            height: 60px;
+            background: linear-gradient(92.68deg, #7CB8F7 0%, #2A8BF2 100%);
+            box-shadow: 0px 0px 2px rgba(42, 139, 242, 0.15), 4px 4px 2px rgba(42, 139, 242, 0.05), 10px 6px 20px rgba(42, 139, 242, 0.15);
+            border-radius: 6px;
+            font-family: TT Norms;
+            font-size: 20px;
+            line-height: 24px;
+            /* identical to box height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: capitalize;
+            color: #FFFFFF;
+        }
+    }
+}

@@ -1,17 +1,17 @@
-import React, { useEffect} from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from './interfaces/store';
 import Login from './pages/login';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Home from './pages/home';
 import Loader from './components/loader';
-import AuthActions from './actions/auth';
+import AuthActions from './apis/auth';
 
 function App() {
   const {checkUser} = new AuthActions();
   const dispatch = useDispatch();
-  const store = useSelector<AppState, AppState>((AppState) => AppState);
-  const isLoggedIn = store.auth.user === null ? null : store.auth.user ? true : false;
+  const {auth} = useSelector<AppState, AppState>((AppState) => AppState);
+  const isLoggedIn = auth.user === null ? null : auth.user ? true : false;
   useEffect(() => {
     dispatch(checkUser())
   }, [])

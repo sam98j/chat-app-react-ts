@@ -1,0 +1,52 @@
+.chat_card {
+    width: 580px;
+    height: 220px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    margin: 20px auto;
+    display: flex;
+    padding: 30px 40px;
+    flex-direction: column;
+    cursor: pointer;
+    box-shadow: 0px 10px 55px rgba(0, 0, 0, 0.05), 0px 4px 10px rgba(0, 0, 0, 0.25), 0px 10px 25px rgba(0, 0, 0, 0.05);
+    .header {
+        display: flex;
+        margin-bottom: 17px;
+        .img {
+            height: 54px;
+            min-width: 54px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background: linear-gradient(to right, orange, greenyellow);
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            flex-grow: 1;
+            h2 {
+                font-family: TT Norms;
+                font-size: 18px;
+                line-height: 21px;
+                text-align: center;
+                text-transform: capitalize;
+                color: #0D1C2E;
+            }
+            p {
+                font-family: TT Norms;
+                font-size: 16px;
+                line-height: 19px;
+                /* identical to box height */
+                text-align: center;
+                text-transform: lowercase;
+                color: #707C97;
+            }
+        }
+    }
+    .message {
+        font-family: TT Norms;
+        font-size: 16px;
+        line-height: 26px;
+        text-transform: capitalize;
+        color: #707C97;
+    }
+}

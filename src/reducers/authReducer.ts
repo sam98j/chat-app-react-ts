@@ -1,4 +1,4 @@
-import { AuthActionsTypes } from "../interfaces/actionsTypes/auth";
+import { AuthActionsTypes } from "../constants/auth";
 import { AuthState } from "../interfaces/store";
 // inital state
 const initState: AuthState = {
@@ -6,17 +6,18 @@ const initState: AuthState = {
 };
 // auth reducer
 const authReducer = (state = initState, action: {type: string, payload: any}): AuthState => {
+    const {CHECK_USER, LOGIN} = AuthActionsTypes;
     switch(action.type){
-        case AuthActionsTypes.LOGIN:
+        case LOGIN:
             localStorage.setItem('token', `Bearar ${action.payload.token!}`)
             return {
                 ...state,
                 user: action.payload.username!
             }
-        case AuthActionsTypes.CHECK_USER:
+        case CHECK_USER:
             return {
                 ...state,
-                user: action.payload.username!
+                user: action.payload
             }
         default:
             return state

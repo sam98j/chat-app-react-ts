@@ -1,5 +1,5 @@
-import { UserCredentials } from '../interfaces/actionsCreators/auth';
-import {AuthActionsTypes} from '../interfaces/actionsTypes/auth'
+import { UserCredentials } from '../interfaces/apis/auth';
+import {AuthActionsTypes} from '../constants/auth'
 export default class AuthActions {
     // gettodos
     login(credentioals: UserCredentials){
@@ -34,8 +34,11 @@ export default class AuthActions {
         // establish connection
         try {
             const reqPending = await fetch('http://localhost:5000/auth/check_user', reqConfig);
-            const res = await reqPending.json();
-            dispatch({type: AuthActionsTypes.CHECK_USER, payload: res})
+            // check for the req status
+            if(reqPending.status === 200) {
+                const res = await reqPending.json();
+                dispatch({type: AuthActionsTypes.CHECK_USER, payload: res})
+            }
         } catch(err) {
             console.log(err)
         }

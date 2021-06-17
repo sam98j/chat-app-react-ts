@@ -1,7 +1,7 @@
-import { UsersActionsTypes } from "../interfaces/actionsTypes/users";
+import { UsersActionsTypes } from "../constants/users";
 import { UsersState } from "../interfaces/store";
 // inital state
-const initState: UsersState = []
+const initState = [] as UsersState
 // auth reducer
 const usersReducer = (state = initState, action: {type: string, payload: any}): UsersState => {
     switch(action.type){

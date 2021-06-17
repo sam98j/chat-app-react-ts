@@ -1,13 +1,23 @@
-import * as React from 'react';
-import { SideBarProps } from '../interfaces/components/sideBar';
-import { User } from '../interfaces/store';
+import { useSelector } from 'react-redux'
+import { AppState } from '../interfaces/store'
 import styles from '../styles/components/sideBar.module.scss'
-import SingleUser from './singleUser';
 
-export const SideBar: React.FC<SideBarProps>  = ({users}) => {
+export const SideBar = () => {
+    const {auth} = useSelector<AppState, AppState>(state => state)
     return (
         <div className={styles.SideBar}>
-            {users.map((user: User) => <SingleUser key={user._id} user={user}/>)}
+            <div className={styles.user}>
+                <div className={styles.img}></div>
+                <h2 className={styles.name}>{auth.user?.username}</h2>
+            </div>
+            <ul className={styles.links}>
+                <li className={styles.link}>Home</li>
+                <li className={styles.link}>Chat</li>
+                <li className={styles.link}>Contact</li>
+                <li className={styles.link}>Notification</li>
+                <li className={styles.link}>Calender</li>
+                <li className={styles.link}>Settings</li>
+            </ul>
         </div>
     )
 }
