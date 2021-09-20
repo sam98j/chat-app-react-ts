@@ -1,8 +1,17 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import AuthActions from '../apis/auth'
 import { AppState } from '../interfaces/store'
 import styles from '../styles/components/sideBar.module.scss'
 
 export const SideBar = () => {
+    // auth api
+    const {logout} = new AuthActions();
+    // store dispatch method
+    const dispatch = useDispatch();
+    // handle logout
+    const handleLogOut = () => {
+        dispatch(logout())
+    }
     const {auth} = useSelector<AppState, AppState>(state => state)
     return (
         <div className={styles.SideBar}>
@@ -18,6 +27,7 @@ export const SideBar = () => {
                 <li className={styles.link}>Calender</li>
                 <li className={styles.link}>Settings</li>
             </ul>
+            <button className={styles.logout} onClick={handleLogOut}>Logout</button>
         </div>
     )
 }

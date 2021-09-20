@@ -10,7 +10,7 @@ import DataActions from '../apis/data';
 const PrivateChat: React.FC<PrivateChatProps> = ({socket_io}) => {
     const {data, users,auth} = useSelector<AppState, AppState>(AppState => AppState)
     // data actions
-    const {setUserChatingWith, sendMessage} = new DataActions();
+    const {setUserChatingWith, sendMessage, getPchatData} = new DataActions();
     // store dispatch method
     const dispatch = useDispatch()
     // componet state
@@ -21,6 +21,12 @@ const PrivateChat: React.FC<PrivateChatProps> = ({socket_io}) => {
     // when component did mount
     React.useEffect(() => {
         dispatch(setUserChatingWith(users[0]))
+    }, [users])
+    // component mount
+    React.useEffect(() => {
+        if(users[0] !== undefined) {
+            dispatch(getPchatData(users[0]._id))
+        }
     }, [users])
     // usr input handler
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +41,7 @@ const PrivateChat: React.FC<PrivateChatProps> = ({socket_io}) => {
         const newMessage: Message = {
             body: state.message,
             reciver: data.pChatData.chattingWith._id!,
-            sender: auth.user?.id!
+            sender: auth.user?._id!
         };
         dispatch(sendMessage(newMessage))
         setState({

@@ -71,5 +71,7 @@
     .messages_box {
         flex-grow: 1;
         overflow-y: scroll;
+        scrollbar-color: #B7BDCB;
+        scrollbar-track-color: red;
     }
 }

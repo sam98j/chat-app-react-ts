@@ -38,9 +38,17 @@ export default class AuthActions {
             if(reqPending.status === 200) {
                 const res = await reqPending.json();
                 dispatch({type: AuthActionsTypes.CHECK_USER, payload: res})
+                return
             }
+            dispatch({type: AuthActionsTypes.CHECK_USER, payload: undefined})
         } catch(err) {
             console.log(err)
+        }
+    }
+    // logout
+    logout(){
+        return (dispatch: Function) => {
+            dispatch({type: AuthActionsTypes.LogOut})
         }
     }
 }

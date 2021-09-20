@@ -18,7 +18,7 @@ const SingleMessage: FC<MessageProps> = ({message}) => {
     }
     // current user id
     const {user} = useSelector<AppState, AuthState>((state) => state.auth)
-    const messDir = user?.id === message.reciver ? recevedMessage : sendedMessage
+    const messDir = user?._id === message.reciver ? recevedMessage : sendedMessage
     return (
         <div className={styles.Message} style={messDir}>
             <p>{message.body}</p>

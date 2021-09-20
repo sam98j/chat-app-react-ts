@@ -14,4 +14,11 @@ export default class UsersActions {
             }
         }
     }
+    // user online 
+    setUserOnline(data: {_id: string, online: boolean}) {
+        console.log(data)
+        return (dispatch: Function) => {
+            dispatch({type: UsersActionsTypes.SetUserOnline, payload: data})
+        }
+    }
 }

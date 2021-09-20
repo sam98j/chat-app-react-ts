@@ -11,6 +11,7 @@ export default class DataActions {
             const reqConfig: RequestInit = {
                 method: "POST",
                 headers: {
+                    authorization: localStorage.getItem('token')!,
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({recUserId})

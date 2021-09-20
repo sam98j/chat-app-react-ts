@@ -15,7 +15,7 @@ const Home = () => {
     // dispatch function
     const dispatch = useDispatch();
     // users api
-    const {getAllUsers} = new UsersActions()
+    const {getAllUsers, setUserOnline} = new UsersActions()
     // data api
     const {reciveNewMessage} = new DataActions()
     // the whole state of the application
@@ -27,18 +27,30 @@ const Home = () => {
     // when componenct mount
     useEffect(() => {
         if(AppState.auth.user !== null) {
-            const current_user_id = AppState.auth.user.id;
+            const current_user_id = AppState.auth.user?._id;
             setState({
                 ...state,
                 io: io(`http://localhost:5000/?_id=${current_user_id}`)
             })
         }
-        dispatch(getAllUsers(AppState.auth.user?.id!))
+        dispatch(getAllUsers(AppState.auth.user?._id!))
     }, []);
     useEffect(() => {
         if(state.io.on !== undefined) {
             state.io.on("message_res", (message: Message) => {
                 dispatch(reciveNewMessage(message))
+            })
+            state.io.on('friend_going_online', d => {
+                dispatch(setUserOnline({
+                    _id: d.user_id,
+                    online: true
+                }))
+            })
+            state.io.on('friend_disconnected', d => {
+                dispatch(setUserOnline({
+                    _id: d.user_id,
+                    online: false
+                }))
             })
         }
     }, [state.io])

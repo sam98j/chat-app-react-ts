@@ -5,10 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
 }
 
 body::-webkit-scrollbar {display: none}
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -20,7 +20,19 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
 }
+
+*::-webkit-scrollbar{width: 6px};
+*::-webkit-scrollbar-track {width: 6px};
+*::-webkit-scrollbar-thumb {
+    width: 6px;
+    height: 79px;
+    background: #B7BDCB;
+    box-shadow: 4px 4px 15px rgba(112, 124, 151, 0.05), 2px 2px 10px rgba(112, 124, 151, 0.1), 1px 1px 50px rgba(112, 124, 151, 0.15);
+    border-radius: 10px;
+} 
 
 .App {
   height: 100vh;

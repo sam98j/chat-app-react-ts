@@ -17,7 +17,19 @@
             min-width: 54px;
             border-radius: 50%;
             margin-right: 20px;
+            position: relative;
             background: linear-gradient(to right, orange, greenyellow);
+            .indecator {
+                display: none;
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                top: 0px;
+                left: 10px;
+                background: #00C305;
+                border: 2px solid #FFFFFF;
+                border-radius: 50%;
+            }
         }
         .info {
             display: flex;
